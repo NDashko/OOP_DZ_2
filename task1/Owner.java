@@ -1,24 +1,21 @@
 package task1;
-// Подкласс для владельца кошки
 
-class Owner extends Cat implements UnlovedThing {
-    private String owner;
+public class Owner {
+    private String ownerName;
 
-    // Конструктор класса Owner
-    public Owner(String name, int age, String owner) {
-        super(name, age);
-        this.owner = owner;
-
+    public Owner(String name) {
+        this.ownerName = name;
     }
 
-    // Геттер для получения владельца кошки
-    public String getOwner() {
-        return owner;
+    public Owner() {
+        this(null);
     }
 
-    @Override
-    public void unlovedThing() {
-        System.out.println(Constants.CAT_OWNER + " не любит, когда " + Constants.CAT_NAME + " пакостит.");
+    public String getOwnerName() {
+        return ownerName;
     }
 
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
 }

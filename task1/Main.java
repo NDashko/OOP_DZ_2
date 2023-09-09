@@ -1,20 +1,51 @@
 package task1;
 
-public class Main {
-    public static void main(String[] args) {
-        // Создание объекта кошки
-        Cat Abyssinian = new Owner(Constants.CAT_NAME, Constants.CAT_AGE, Constants.CAT_OWNER);
-        Owner owner = new Owner(null, 0, null);
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-        // Использование геттеров и сеттеров
-        System.out.println("Мяу! Меня зовут " + Abyssinian.getName());
-        System.out.println("Мне " + Abyssinian.getAge() + " года (лет)");
-        System.out.println("Мой владелец - " + Abyssinian.getOwner());
-        Abyssinian.makeSound();
-        Abyssinian.favoriteFood();
-        Abyssinian.favoriteToy();
-        Abyssinian.unlovedAnimal();
-        owner.unlovedThing();
-    }
+
+public class Main implements Constants {
+    
+    public static void main(String[] args) {
+    
+        Cat cat = new Cat();
+        List<Cat> cats = new ArrayList<>();
+        cats.add(new Cat("Мурка", 3, "Иванов"));
+        cats.add(new Cat("Васька", 2, "Петров"));
+        cats.add(new Cat("Барсик", 5, "Сидоров"));
+        cats.add(new Cat("Нюся", 8, "Васечкин"));
+
+        cat.setName(CAT_NAME);
+        cat.setAge(CAT_AGE);
+        cat.setOwnerName(OWNER_NAME);
+
+        cat.greet();
+        cat.makeSound();
+        cat.favoriteFood();
+        cat.favoriteToy();
+        cat.unlovedAnimal();
+        cat.move();
+
+        System.out.println("\nСписок кошек до сортировки: ");
+        for (Cat person : cats) {
+        System.out.println(person);
+        }
+
+        // Создаем компаратор для сортировки по возрасту в порядке возрасатния
+        Comparator<Cat> ageComparator = Comparator.comparingInt(person -> person.age);
+
+        // Сортируем список с помощью компаратора 
+        Collections.sort(cats, ageComparator);
+
+        System.out.println("\nСписок кошек после сортировки по возрасту: ");
+        for (Cat person : cats){
+            System.out.println(person);
+        }
+       
 }
+}
+
+
 

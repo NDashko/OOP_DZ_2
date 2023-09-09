@@ -1,35 +1,54 @@
-// package task1;
-
-// class Cat extends Owner implements SoundMarker {
-//     private String name;
-//     private Integer age;
-
 package task1;
-// Базовый класс для кошек
-class Cat implements SoundMarker, LikeEat, FavoriteToy, UnlovedAnimal, Animal {
-    private String name;
-    private int age;
 
+class Cat extends Owner implements SoundMarker, LikeEat, FavoriteToy, UnlovedAnimal, Animal {
+private String name;
+    Integer age;
 
-    // Конструктор класса Cat
-    public Cat(String name, int age) {
+    public Cat(String name, Integer age, String ownerName) {
+        super(ownerName);
         this.name = name;
         this.age = age;
     }
 
-    // Геттер для получения имени кошки
+    @Override
+    public String toString() {
+        return name + " " + age + " лет";
+    }
+
+    public Cat(String name, Integer age) {
+        this("", null, null);
+    }
+
+    public Cat(String name) {
+        this("", null);
+    }
+
+    public Cat() {
+        this("");
+    }
+
     public String getName() {
         return name;
     }
 
-    
-    // Геттер для получения возраста кошки
-    public int getAge() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
         return age;
     }
 
-    public String getOwner() {
-        return null;
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void greet() {
+        if (getOwnerName() != null){
+            System.out.println("Мяу! Меня зовут " + name + ". Мне " + age + " года(лет). Мой владелец " + getOwnerName() + ".");
+        } else {
+            System.out.println("Вы не указали имя владельца");
+        }
     }
 
     @Override
@@ -37,7 +56,6 @@ class Cat implements SoundMarker, LikeEat, FavoriteToy, UnlovedAnimal, Animal {
         System.out.println(name + " мяукает.");
     }
 
-    
     @Override
     public void favoriteFood() {
         System.out.println(name + " любит рыбку.");
@@ -58,5 +76,3 @@ class Cat implements SoundMarker, LikeEat, FavoriteToy, UnlovedAnimal, Animal {
     return "бегает";
     }
 }
-
-
